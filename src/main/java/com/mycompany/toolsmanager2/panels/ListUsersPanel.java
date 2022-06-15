@@ -13,6 +13,7 @@ import static com.mycompany.toolsmanager2.utils.Utils.resizeImageIcon1;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -66,8 +67,6 @@ public class ListUsersPanel extends javax.swing.JPanel {
             }
         });
 
-        lblUsuari.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,8 +100,8 @@ public class ListUsersPanel extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(lblUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(pnlEines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlEines, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,16 +129,14 @@ public class ListUsersPanel extends javax.swing.JPanel {
        }
        
           try {
-                File f = new File(selectedUser.getFoto());
+                File f = new File(selectedUser.getFoto().trim());
                 BufferedImage profileBufferedImage = ImageIO.read(f);
                 ImageIcon icon  = Utils.resizeImageIcon1(profileBufferedImage, lblUsuari.getWidth(), lblUsuari.getHeight());;
-                lblUsuari.setIcon(icon);
-            }
+                lblUsuari.setIcon(icon);}
+          
             catch(IOException ioe) {
                 System.out.println("Image not in pc data");
             }
-       
-       
        
        
       ((JFrame)(this.getRootPane().getParent())).pack();

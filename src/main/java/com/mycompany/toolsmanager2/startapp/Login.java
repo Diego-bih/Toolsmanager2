@@ -182,12 +182,12 @@ public class Login extends javax.swing.JDialog {
             for (Usuari u : uArrayList) {
                 if (u.getEmail().trim().equals(txtEmail.getText()) && u.getPassword().trim().equals(pwd) ) {
                     System.out.println(u.getEmail() + " " + u.getPassword());
+                    UserInfo s = new UserInfo();
                     MainFrame m = new MainFrame();
                     m.logged = true;
-                    m.username = u.getUsername().trim();
-                    m.photo = u.getFoto().trim();
+                    s.username = u.getUsername().trim();
+                    s.photo = u.getFoto().trim();
                     this.dispose();
-                    m.activeUserInfo();
                     break;
                     //getParent().setVisible(true);
                 }else{
@@ -205,9 +205,6 @@ public class Login extends javax.swing.JDialog {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        MainFrame m = new MainFrame();
-        if(m.logged != false){
-        System.exit(0);}
     }//GEN-LAST:event_formWindowClosed
 
     /**

@@ -62,7 +62,7 @@ public class Utils {
                 JOptionPane.WARNING_MESSAGE);
     }
     
-    public static ImageIcon resizeImageIcon1 (BufferedImage originalImage, int desiredWidth, int desiredHeight) {
+      public static ImageIcon resizeImageIcon1 (BufferedImage originalImage, int desiredWidth, int desiredHeight) {
         int newHeight = 0;    
         int newWidth = 0;
         float aspectRatio = (float)originalImage.getWidth() / originalImage.getHeight();
@@ -76,7 +76,7 @@ public class Utils {
         }
         Image resultingImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         BufferedImage outputImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-        outputImage.getGraphics().drawImage(resultingImage,0,0, null);
+        outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
         ImageIcon imageIcon = new ImageIcon(outputImage);
         return imageIcon;
     }
@@ -103,6 +103,39 @@ public class Utils {
     graphics2D.dispose();
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     ImageIO.write(resultingImage, "png", baos);
+    icon = new ImageIcon(baos.toByteArray());
+
+    baos.close();
+
+    } catch (IOException ex) {
+    Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    return icon;
+    }
+    
+    public static ImageIcon resizeImageIcon3(URL url,int desiredWidth, int desiredHeight) {
+    int newHeight = 0;
+    int newWidth = 0;
+    BufferedImage originalBufferedImage = null;
+    ImageIcon icon = null;
+
+    try {
+    originalBufferedImage = ImageIO.read(url);
+    float aspectRatio = (float) originalBufferedImage.getWidth() / originalBufferedImage.getHeight();
+    if (originalBufferedImage.getWidth() > originalBufferedImage.getHeight()) {
+    newWidth = desiredWidth;
+    newHeight = Math.round(desiredWidth / aspectRatio);
+    } else {
+    newHeight = desiredHeight;
+    newWidth = Math.round(desiredHeight * aspectRatio);
+    }
+    BufferedImage resultingImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+    Graphics2D graphics2D = resultingImage.createGraphics();
+    graphics2D.drawImage(originalBufferedImage, 0, 0, newWidth, newHeight, null);
+    graphics2D.dispose();
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    ImageIO.write(resultingImage, "PNG", baos);
     icon = new ImageIcon(baos.toByteArray());
 
     baos.close();

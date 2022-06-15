@@ -28,11 +28,10 @@ import javax.swing.WindowConstants;
  * @author Diego Ramirez
  */
 public class MainFrame extends javax.swing.JFrame {
-    ListUsersPanel pnlUsersList;
-    UserInfo userInfo;
-    public boolean logged = false;
-    public String username;
-    public String photo;
+    //ListUsersPanel pnlUsersList;
+    //UserInfo userInfo;
+    public static  boolean logged = false;
+    
   
     /**
      * Creates new form MainFrame
@@ -123,6 +122,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void mniProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProfileActionPerformed
         // TODO add your handling code here:
+         hideActivePanel();
+         if(logged = true){
+        UserInfo pnlUsersI = new UserInfo();
+        getContentPane().add(pnlUsersI, java.awt.BorderLayout.CENTER);}
+        pack();
     }//GEN-LAST:event_mniProfileActionPerformed
 
     private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
@@ -136,13 +140,16 @@ public class MainFrame extends javax.swing.JFrame {
     private void mniListUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListUsersActionPerformed
         // TODO add your handling code here:
         hideActivePanel();
-        if(pnlUsersList == null){
+        /*if(pnlUsersList == null){
         ListUsersPanel pnlUsersList = new ListUsersPanel();
         getContentPane().add(pnlUsersList, java.awt.BorderLayout.CENTER);
         pack();
         }else{
         pnlUsersList.setVisible(true);
-        }
+        }*/
+        ListUsersPanel pnlUsersList = new ListUsersPanel();
+        getContentPane().add(pnlUsersList, java.awt.BorderLayout.CENTER);
+        pack();
   
     }//GEN-LAST:event_mniListUsersActionPerformed
 
@@ -155,17 +162,10 @@ public class MainFrame extends javax.swing.JFrame {
         Login login = new Login(this, true);
         login.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         login.setVisible(true);
+        
+        
     }//GEN-LAST:event_formWindowOpened
-     public  void activeUserInfo(){
-        if(logged = true && userInfo == null){
-        UserInfo pnlUsersI = new UserInfo();
-        getContentPane().add(pnlUsersI, java.awt.BorderLayout.CENTER);
-        pack();
-        }else{
-        userInfo.setVisible(true);
-        //this.setLocationRelativeTo(null);     
-    }
-     }
+
     private void hideActivePanel(){
         Component[] panels = getContentPane().getComponents();
         for (Component c: panels) {

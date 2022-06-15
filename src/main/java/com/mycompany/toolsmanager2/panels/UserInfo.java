@@ -12,36 +12,34 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Diego Ramirez
  */
 public class UserInfo extends javax.swing.JPanel {
- 
+ public static String username;
+
+ public static String photo;
     /**
      * Creates new form UserInfo
      */
     public UserInfo() {
         initComponents();
-        showInfoUser();
-        
-    }
-    public void showInfoUser(){
-            MainFrame m = new MainFrame();
-            lblUserName.setText(m.username);
-            BufferedImage originalImage = null;
-            /*try {
-                originalImage = ImageIO.read(new File(MainFrame.photo));
-                ImageIcon icon = Utils.resizeImageIcon1(originalImage, lblUserImage.getWidth(), lblUserImage.getHeight());
+        lblUserName.setText(username);
+        BufferedImage originalImage = null;
+        try {
+                originalImage = ImageIO.read(new File(photo));
+                ImageIcon icon = Utils.resizeImageIcon1(originalImage, 262, 153);
                 lblUserImage.setIcon(icon);
             } catch (IOException ioe) {
                 System.out.println("Imagen no valida");
             }catch(NullPointerException e) {
              System.out.println("NullPointerException thrown!");
-            }*/
-    
+            }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,12 +79,12 @@ public class UserInfo extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addGap(69, 69, 69))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
@@ -101,8 +99,8 @@ public class UserInfo extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(lblUserImage, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
