@@ -185,6 +185,7 @@ public class Login extends javax.swing.JDialog {
                     UserInfo s = new UserInfo();
                     MainFrame m = new MainFrame();
                     m.logged = true;
+                    m.idUsuari = u.getId();
                     s.username = u.getUsername().trim();
                     s.photo = u.getFoto().trim();
                     this.dispose();

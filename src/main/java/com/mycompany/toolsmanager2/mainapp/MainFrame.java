@@ -7,6 +7,8 @@ package com.mycompany.toolsmanager2.mainapp;
 
 import com.mycompany.toolsmanager2.dataaccess.DataAccess;
 import com.mycompany.toolsmanager2.models.Usuari;
+import com.mycompany.toolsmanager2.panels.DeleteUser;
+import com.mycompany.toolsmanager2.panels.InventariCount;
 import com.mycompany.toolsmanager2.panels.ListUsersPanel;
 import com.mycompany.toolsmanager2.panels.UserInfo;
 import com.mycompany.toolsmanager2.startapp.Login;
@@ -31,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
     //ListUsersPanel pnlUsersList;
     //UserInfo userInfo;
     public static  boolean logged = false;
+    public static  int idUsuari;
     
   
     /**
@@ -53,10 +56,10 @@ public class MainFrame extends javax.swing.JFrame {
         mnuUser = new javax.swing.JMenu();
         mniProfile = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
+        mniDeleteUser = new javax.swing.JMenuItem();
         mnuStats = new javax.swing.JMenu();
-        mniSessions = new javax.swing.JMenuItem();
         mniListUsers = new javax.swing.JMenuItem();
-        mniInventari = new javax.swing.JMenuItem();
+        mniInventariCount = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
@@ -84,17 +87,17 @@ public class MainFrame extends javax.swing.JFrame {
         });
         mnuUser.add(mniLogout);
 
+        mniDeleteUser.setText("DeleteUser");
+        mniDeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDeleteUserActionPerformed(evt);
+            }
+        });
+        mnuUser.add(mniDeleteUser);
+
         jMenuBar1.add(mnuUser);
 
         mnuStats.setText("Actions");
-
-        mniSessions.setText("Sessions");
-        mniSessions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniSessionsActionPerformed(evt);
-            }
-        });
-        mnuStats.add(mniSessions);
 
         mniListUsers.setText("List Users");
         mniListUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -104,13 +107,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         mnuStats.add(mniListUsers);
 
-        mniInventari.setText("Inventari");
-        mniInventari.addActionListener(new java.awt.event.ActionListener() {
+        mniInventariCount.setText("InventariCount");
+        mniInventariCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniInventariActionPerformed(evt);
+                mniInventariCountActionPerformed(evt);
             }
         });
-        mnuStats.add(mniInventari);
+        mnuStats.add(mniInventariCount);
 
         jMenuBar1.add(mnuStats);
 
@@ -131,11 +134,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
         // TODO add your handling code here:
+        Login login = new Login(this, true);
+        login.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        hideActivePanel();
+        login.setVisible(true);
+        MainFrame.logged = false;
     }//GEN-LAST:event_mniLogoutActionPerformed
-
-    private void mniSessionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSessionsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniSessionsActionPerformed
 
     private void mniListUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListUsersActionPerformed
         // TODO add your handling code here:
@@ -153,9 +157,14 @@ public class MainFrame extends javax.swing.JFrame {
   
     }//GEN-LAST:event_mniListUsersActionPerformed
 
-    private void mniInventariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInventariActionPerformed
+    private void mniInventariCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInventariCountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mniInventariActionPerformed
+        hideActivePanel();
+        InventariCount pnlIC = new InventariCount();
+        getContentPane().add(pnlIC, java.awt.BorderLayout.CENTER);
+        pack();
+        
+    }//GEN-LAST:event_mniInventariCountActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -165,6 +174,14 @@ public class MainFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void mniDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteUserActionPerformed
+        // TODO add your handling code here:
+        hideActivePanel();
+        DeleteUser deleteUser = new DeleteUser();
+        getContentPane().add(deleteUser, java.awt.BorderLayout.CENTER);
+        pack();
+    }//GEN-LAST:event_mniDeleteUserActionPerformed
 
     private void hideActivePanel(){
         Component[] panels = getContentPane().getComponents();
@@ -231,11 +248,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem mniInventari;
+    private javax.swing.JMenuItem mniDeleteUser;
+    private javax.swing.JMenuItem mniInventariCount;
     private javax.swing.JMenuItem mniListUsers;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JMenuItem mniProfile;
-    private javax.swing.JMenuItem mniSessions;
     private javax.swing.JMenu mnuStats;
     private javax.swing.JMenu mnuUser;
     // End of variables declaration//GEN-END:variables

@@ -46,7 +46,7 @@ public class Usuari {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nom = nom.trim();
     }
 
     public String getLlinatge() {
@@ -54,7 +54,7 @@ public class Usuari {
     }
 
     public void setLlinatge(String llinatge) {
-        this.llinatge = llinatge;
+        this.llinatge = llinatge.trim();
     }
 
     public String getUsername() {
@@ -99,7 +99,7 @@ public class Usuari {
 
     @Override
     public String toString() {
-        return "Usuari{" + "id=" + id + ", nom=" + nom + ", llinatge=" + llinatge + ", username=" + username + ", email=" + email + ", password=" + password + ", foto=" + foto + ", fotoMimeType=" + fotoMimeType + '}';
+        return nom + " " + llinatge;
     }
 
     int id;

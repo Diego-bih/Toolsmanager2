@@ -25,6 +25,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogoutActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniDeleteUser">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DeleteUser"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteUserActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuStats">
@@ -32,14 +40,6 @@
             <Property name="text" type="java.lang.String" value="Actions"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniSessions">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sessions"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniSessionsActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniListUsers">
               <Properties>
                 <Property name="text" type="java.lang.String" value="List Users"/>
@@ -48,12 +48,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListUsersActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniInventari">
+            <MenuItem class="javax.swing.JMenuItem" name="mniInventariCount">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inventari"/>
+                <Property name="text" type="java.lang.String" value="InventariCount"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniInventariActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniInventariCountActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -6,6 +6,7 @@
 package com.mycompany.toolsmanager2.dataaccess;
 
 import com.mycompany.toolsmanager2.models.Eina;
+import com.mycompany.toolsmanager2.models.Intents;
 import com.mycompany.toolsmanager2.models.Usuari;
 import java.io.IOException;
 import java.sql.Connection;
@@ -65,7 +66,7 @@ public class DataAccess {
 
         return users;
     }
-    
+
      public int insertUser(Usuari user) {
 
         try (Connection connection = getConnection();) {
@@ -126,6 +127,30 @@ public class DataAccess {
         }
 
         return tools;
+    }
+        
+        public int getCommentCount(Usuari u) {
+        int commentCount = 0;
+        try ( Connection connection = getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("Select count(Inventari.id_eina) as TotalTools from Inventari where Inventari.id_usuari = ?");
+            preparedStatement.setInt(1, u.getId());
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                commentCount = rs.getInt("TotalTools");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return commentCount;
+    }
+        
+          public int deleteUser(Usuari user) throws SQLException {
+            try (Connection connection = getConnection();) {
+            PreparedStatement modifyUserStatement = connection.prepareStatement("DELETE FROM dbo.[usuaris] WHERE id = ?");
+            modifyUserStatement.setInt(1, user.getId());
+            int result = modifyUserStatement.executeUpdate();
+            return result;
+        }
     }
 }
     

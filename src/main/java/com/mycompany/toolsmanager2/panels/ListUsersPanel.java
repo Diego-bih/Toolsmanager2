@@ -38,6 +38,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         initComponents();
          lstUsuaris = new JList();
         jspUsers.setViewportView(lstUsuaris);
+        srcInventari.setViewportView(pnlEines);
         lstUsuaris.addListSelectionListener(new javax.swing.event.ListSelectionListener(){
 	public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
 		lstUsersValueChanged(evt);
@@ -58,6 +59,7 @@ public class ListUsersPanel extends javax.swing.JPanel {
         btnListUsers = new javax.swing.JButton();
         jspUsers = new javax.swing.JScrollPane();
         lblUsuari = new javax.swing.JLabel();
+        srcInventari = new javax.swing.JScrollPane();
         pnlEines = new javax.swing.JPanel();
 
         btnListUsers.setText("List");
@@ -67,6 +69,12 @@ public class ListUsersPanel extends javax.swing.JPanel {
             }
         });
 
+        srcInventari.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        pnlEines.setPreferredSize(new java.awt.Dimension(500, 1000));
+        pnlEines.setLayout(new javax.swing.BoxLayout(pnlEines, javax.swing.BoxLayout.Y_AXIS));
+        srcInventari.setViewportView(pnlEines);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,18 +82,19 @@ public class ListUsersPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jspUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(225, 225, 225))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(btnListUsers)
-                        .addContainerGap(394, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlEines, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jspUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(62, 62, 62))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(srcInventari, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,9 +108,9 @@ public class ListUsersPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(lblUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(pnlEines, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(srcInventari, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,6 +120,8 @@ public class ListUsersPanel extends javax.swing.JPanel {
         DefaultListModel<Usuari> userListModel = new DefaultListModel<>();
         for (Usuari u: users)
         {
+            u.setNom(u.getNom());
+            u.setLlinatge(u.getLlinatge());
             userListModel.addElement(u);
         }
         lstUsuaris.setModel(userListModel);
@@ -148,5 +159,6 @@ public class ListUsersPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jspUsers;
     private javax.swing.JLabel lblUsuari;
     private javax.swing.JPanel pnlEines;
+    private javax.swing.JScrollPane srcInventari;
     // End of variables declaration//GEN-END:variables
 }
